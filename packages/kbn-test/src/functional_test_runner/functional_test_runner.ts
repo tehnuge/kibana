@@ -98,7 +98,7 @@ export class FunctionalTestRunner {
         }));
 
       const providers = new ProviderCollection(this.log, [
-        ...coreProviders.map(p =>
+        ...coreProviders.map((p) =>
           p.name !== 'dockerServers'
             ? p
             : {

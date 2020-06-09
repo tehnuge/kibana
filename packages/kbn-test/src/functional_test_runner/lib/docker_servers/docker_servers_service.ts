@@ -56,11 +56,11 @@ export class DockerServersService {
   }
 
   has(name: string) {
-    return this.servers.some(s => s.name === name);
+    return this.servers.some((s) => s.name === name);
   }
 
   get(name: string) {
-    const server = this.servers.find(s => s.name === name);
+    const server = this.servers.find((s) => s.name === name);
     if (!server) {
       throw new Error(`no server with name "${name}"`);
     }
@@ -142,7 +142,7 @@ export class DockerServersService {
     // ensure container stays running, error if it exits
     lifecycle.cleanup.addSub(
       observeContainerRunning(name, containerId, log).subscribe({
-        error: error => {
+        error: (error) => {
           lifecycle.cleanup.after$.subscribe(() => {
             log.error(`[docker:${name}] Error ensuring that the container is running`);
             log.error(error);
@@ -195,7 +195,7 @@ export class DockerServersService {
         ? Rx.EMPTY
         : firstWithTimeout(
             logLine$.pipe(
-              filter(line =>
+              filter((line) =>
                 waitForLogLine instanceof RegExp
                   ? waitForLogLine.test(line)
                   : line.includes(waitForLogLine)
@@ -207,6 +207,6 @@ export class DockerServersService {
   }
 
   private async startServers() {
-    await Promise.all(this.servers.map(async server => this.startServer(server)));
+    await Promise.all(this.servers.map(async (server) => this.startServer(server)));
   }
 }

@@ -26,7 +26,7 @@ import { ToolingLog } from '@kbn/dev-utils';
  * container exits before being unsubscribed
  */
 export function observeContainerRunning(name: string, containerId: string, log: ToolingLog) {
-  return new Rx.Observable(subscriber => {
+  return new Rx.Observable((subscriber) => {
     log.debug(`[docker:${name}] watching container for exit status [${containerId}]`);
 
     const exitCodeProc = execa('docker', ['wait', containerId]);
@@ -46,7 +46,7 @@ export function observeContainerRunning(name: string, containerId: string, log: 
           );
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (error?.killed) {
           // ignore errors thrown because the process was killed
           subscriber.complete();
