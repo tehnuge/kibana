@@ -67,7 +67,7 @@ export class LifecyclePhase<Args extends readonly any[]> {
 
     // shuffle the handlers to prevent relying on their order
     await Promise.all(
-      shuffle(this.handlers).map(async fn => {
+      shuffle(this.handlers).map(async (fn) => {
         try {
           await fn(...args);
         } catch (_error) {

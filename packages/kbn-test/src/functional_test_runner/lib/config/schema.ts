@@ -57,9 +57,7 @@ const dockerServerSchema = () =>
       portInContainer: Joi.number().required(),
       waitForLogLine: Joi.alternatives(Joi.object().type(RegExp), Joi.string()).optional(),
       waitFor: Joi.func().optional(),
-      args: Joi.array()
-        .items(Joi.string())
-        .optional(),
+      args: Joi.array().items(Joi.string()).optional(),
     })
     .default();
 
@@ -265,8 +263,6 @@ export const schema = Joi.object()
       })
       .default(),
 
-    dockerServers: Joi.object()
-      .pattern(Joi.string(), dockerServerSchema())
-      .default(),
+    dockerServers: Joi.object().pattern(Joi.string(), dockerServerSchema()).default(),
   })
   .default();
