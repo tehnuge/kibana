@@ -6,15 +6,15 @@ def label(size) {
     case 'flyweight':
       return 'flyweight'
     case 's':
-      return 'ubuntu-18.04 && immutable'
+      return 'docker && linux && immutable'
     case 's-highmem':
-      return 'ubuntu-tests-s'
+      return 'docker && tests-s'
     case 'l':
-      return 'ubuntu-tests-l'
+      return 'docker && tests-l'
     case 'xl':
-      return 'ubuntu-18-tests-xl'
+      return 'docker && tests-xl'
     case 'xxl':
-      return 'ubuntu-18-tests-xxl'
+      return 'docker && tests-xxl'
   }
 
   error "unknown size '${size}'"
