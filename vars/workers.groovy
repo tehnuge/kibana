@@ -3,6 +3,8 @@
 
 def label(size) {
   switch(size) {
+    case 'flyweight':
+      return 'flyweight'
     case 's':
       return 'ubuntu-18.04 && immutable'
     case 's-highmem':
